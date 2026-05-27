@@ -559,7 +559,7 @@ a {
    Panel 7 — CTA
    ========================================================== */
 .panel--cta {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
 }
 
 .panel--cta .panel__heading {
