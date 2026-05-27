@@ -152,20 +152,14 @@ a {
   max-width: 280px;
 }
 
-.strike {
-  position: relative;
-  display: inline;
-}
-
-.strike::after {
-  content: "";
+.problem__item .strike {
   position: absolute;
-  left: 0;
   top: 50%;
+  left: 0;
   width: 0;
   height: 3px;
   background: #e74c3c;
-  transform: translateY(-50%);
+  border-radius: 2px;
 }
 
 /* ==========================================================
