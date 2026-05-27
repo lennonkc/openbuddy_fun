@@ -277,11 +277,11 @@ function initProblem() {
     labelTl.fromTo(
       ".panel--problem .panel__label",
       { opacity: 0 },
-      { opacity: 1, duration: 0.15, repeat: 5, yoyo: true, ease: "steps(1)" }
+      { opacity: 1, duration: 0.2, repeat: 5, yoyo: true, ease: "steps(1)" }
     );
     labelTl.to(".panel--problem .panel__label", {
       opacity: 1,
-      duration: 0.2,
+      duration: 0.27,
     });
   }
 
@@ -301,22 +301,22 @@ function initProblem() {
     headTl.from(words, {
       opacity: 0,
       duration: 0,
-      stagger: 0.2,
+      stagger: 0.27,
     });
     headTl.to(
       words,
       {
         keyframes: [
-          { x: -8, color: "#e74c3c", duration: 0.08 },
-          { x: 12, duration: 0.08 },
-          { x: -6, duration: 0.08 },
-          { x: 10, color: "#e74c3c", duration: 0.08 },
-          { x: -4, duration: 0.06 },
-          { x: 0, color: "#2d3436", duration: 0.3 },
+          { x: -8, color: "#e74c3c", duration: 0.11 },
+          { x: 12, duration: 0.11 },
+          { x: -6, duration: 0.11 },
+          { x: 10, color: "#e74c3c", duration: 0.11 },
+          { x: -4, duration: 0.08 },
+          { x: 0, color: "#2d3436", duration: 0.4 },
         ],
-        stagger: 0.2,
+        stagger: 0.27,
       },
-      0.02
+      0.03
     );
   }
 
@@ -325,8 +325,8 @@ function initProblem() {
     {
       opacity: 0,
       y: 20,
-      duration: 0.6,
-      delay: 0.3,
+      duration: 0.8,
+      delay: 0.4,
     },
     ".panel--problem .panel__heading"
   );
@@ -338,8 +338,8 @@ function initProblem() {
       {
         y: 30,
         opacity: 0,
-        duration: 0.6,
-        stagger: 0.15,
+        duration: 0.8,
+        stagger: 0.2,
       },
       ".problem__items"
     );
@@ -349,9 +349,9 @@ function initProblem() {
     if (!scrollTween) return;
     gsap.to(strike, {
       width: "80%",
-      duration: 0.5,
+      duration: 0.67,
       ease: "power2.inOut",
-      delay: 0.6 + i * 0.2,
+      delay: 0.8 + i * 0.27,
       scrollTrigger: {
         containerAnimation: scrollTween,
         trigger: strike.closest(".problem__item"),
@@ -449,7 +449,7 @@ function initSolution() {
     var icons = document.querySelectorAll(".solution__icon");
     deckTl.fromTo(
       icons,
-      { opacity: 0, y: -80, scale: 2 },
+      { opacity: 0, y: -30, scale: 1.3 },
       {
         opacity: 1,
         y: 0,
