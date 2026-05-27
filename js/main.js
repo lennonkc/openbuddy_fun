@@ -481,8 +481,8 @@ function initSolution() {
     /* Continuous icon float */
     icons.forEach(function (icon, i) {
       gsap.to(icon, {
-        y: -10,
-        scale: 1.1,
+        y: -4,
+        scale: 1.03,
         duration: gsap.utils.wrap([1.8, 2.2, 2])(i),
         ease: "sine.inOut",
         repeat: -1,
@@ -835,35 +835,35 @@ function initCTA() {
     );
   }
 
-  /* CTA buttons: elastic bounce + background pulse */
+  /* CTA buttons: pop up + flash */
   const links = document.querySelectorAll(".cta__link");
   if (links.length && scrollTween) {
     const linkTl = gsap.timeline({
       scrollTrigger: {
         trigger: ".cta__links",
-        start: "left 80%",
+        start: "left 85%",
         toggleActions: "play none none reset",
         containerAnimation: scrollTween,
       },
     });
     linkTl.from(links, {
-      y: 60,
+      y: 30,
       opacity: 0,
-      scale: 0.6,
-      duration: 1,
-      stagger: 0.2,
-      ease: "elastic.out(1, 0.45)",
+      scale: 0.8,
+      duration: 0.6,
+      stagger: 0.12,
+      ease: "back.out(1.7)",
     });
     linkTl.to(
       links,
       {
         keyframes: [
-          { backgroundColor: "rgba(255,255,255,0.5)", duration: 0.4 },
-          { backgroundColor: "rgba(255,255,255,0.2)", duration: 0.6 },
+          { backgroundColor: "rgba(255,255,255,0.45)", duration: 0.3 },
+          { backgroundColor: "rgba(255,255,255,0.2)", duration: 0.4 },
         ],
-        stagger: 0.15,
+        stagger: 0.1,
       },
-      "-=0.6"
+      "-=0.3"
     );
   }
 

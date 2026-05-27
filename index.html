@@ -21,6 +21,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
+  <!-- Iconify (for Fluent Emoji Flat icons) -->
+  <script defer src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -70,20 +73,35 @@
       <section class="panel panel--problem">
         <div class="panel__inner">
           <p class="panel__label" data-animate="fade">[ The Problem ]</p>
-          <h2 class="panel__heading" data-animate="words">The file system. The document type. The keyboard.</h2>
+          <h2 class="panel__heading" data-animate="words">The terminal. The file system. The file type.</h2>
           <p class="panel__sub" data-animate="fade">Too complicated for kids. Too complicated for anyone who just wants to create.</p>
           <div class="problem__items">
             <div class="problem__item" data-animate="slide">
-              <span class="problem__text">Terminal</span>
-              <span class="problem__strike"></span>
+              <div class="problem__photo problem__photo--1">
+                <img src="public/terminal_image.png" alt="Terminal commands" loading="lazy" draggable="false">
+              </div>
+              <div class="problem__label">
+                <span class="problem__text">Terminal</span>
+                <span class="problem__strike"></span>
+              </div>
             </div>
             <div class="problem__item" data-animate="slide">
-              <span class="problem__text">File Tree</span>
-              <span class="problem__strike"></span>
+              <div class="problem__photo problem__photo--2">
+                <img src="public/filesystem_image.png" alt="File system paths" loading="lazy" draggable="false">
+              </div>
+              <div class="problem__label">
+                <span class="problem__text">File Tree</span>
+                <span class="problem__strike"></span>
+              </div>
             </div>
             <div class="problem__item" data-animate="slide">
-              <span class="problem__text">File Names</span>
-              <span class="problem__strike"></span>
+              <div class="problem__photo problem__photo--3">
+                <img src="public/filetype_image.png" alt="Document types" loading="lazy" draggable="false">
+              </div>
+              <div class="problem__label">
+                <span class="problem__text">File Types</span>
+                <span class="problem__strike"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -98,17 +116,17 @@
           <h2 class="panel__heading" data-animate="words">Just press. Just speak. Just create.</h2>
           <div class="solution__cards">
             <div class="solution__card" data-animate="card">
-              <div class="solution__icon">&#x1F5E3;&#xFE0F;</div>
+              <div class="solution__icon"><iconify-icon icon="fluent-emoji-flat:studio-microphone" width="1em" height="1em"></iconify-icon></div>
               <h3 class="solution__title">Voice First</h3>
               <p class="solution__desc">No typing needed. Press the button, speak your mind.</p>
             </div>
             <div class="solution__card" data-animate="card">
-              <div class="solution__icon">&#x1F3E0;</div>
+              <div class="solution__icon"><iconify-icon icon="fluent-emoji-flat:house" width="1em" height="1em"></iconify-icon></div>
               <h3 class="solution__title">Room</h3>
               <p class="solution__desc">Files become simple items. Just click to see. PNG, PDF, Markdown — all previewed instantly.</p>
             </div>
             <div class="solution__card" data-animate="card">
-              <div class="solution__icon">&#x1F916;</div>
+              <div class="solution__icon"><iconify-icon icon="fluent-emoji-flat:robot" width="1em" height="1em"></iconify-icon></div>
               <h3 class="solution__title">Agent Power</h3>
               <p class="solution__desc">Built with Claude Agent SDK. The full power of code agents, zero complexity.</p>
             </div>
