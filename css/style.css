@@ -454,6 +454,10 @@ a {
   box-shadow: 0 0 8px var(--dot);
 }
 
+.panel--showcase .panel__heading .word {
+  transform-style: preserve-3d;
+}
+
 /* ==========================================================
    Panel 5 — Screenshots
    ========================================================== */
@@ -502,6 +506,24 @@ a {
 .screens__placeholder small {
   font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+.panel--screens .panel__label {
+  position: relative;
+}
+
+.panel--screens .panel__label::after {
+  content: "\25CC";
+  display: inline-block;
+  color: var(--primary);
+  animation: cursor-blink 0.8s steps(2) infinite;
+  margin-left: 2px;
+  font-weight: 400;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 /* ==========================================================
@@ -566,6 +588,10 @@ a {
   color: #fff;
   max-width: 700px;
   margin-bottom: 2.5rem;
+}
+
+.panel--cta .panel__heading .char {
+  display: inline-block;
 }
 
 .cta__links {
