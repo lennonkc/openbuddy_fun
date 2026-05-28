@@ -678,7 +678,7 @@ function initScreens() {
 
 /* ---------- Panel 6: Video ---------- */
 
-const VIDEO_ID = "VIDEO_ID_HERE";
+const VIDEO_ID = "PxPKkh4E9-Y";
 
 function initVideo() {
   const heading = document.querySelector(".panel--video .panel__heading");
