@@ -591,7 +591,7 @@ function initShowcase() {
       );
 
       var img = item.querySelector(".showcase__device");
-      if (img) addParallax(img, offset);
+      if (img && !isNarrow) addParallax(img, offset);
     });
   }
 }
@@ -672,7 +672,7 @@ function initScreens() {
       item
     );
 
-    addParallax(item, offset);
+    if (!isNarrow) addParallax(item, offset);
   });
 }
 

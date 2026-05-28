@@ -677,227 +677,613 @@ a {
 
 /* ==========================================================
    Responsive — Mobile (horizontal scroll preserved)
+   Strategy: each panel must fit STRICTLY inside 100svh.
+   Horizontal scroll pins the wrapper, so vertical overflow
+   inside a panel is permanently invisible. Re-layout cards
+   from columns into compact horizontal rows, shrink type,
+   collapse paddings, and lock parallax-causing transforms.
    ========================================================== */
 @media (max-width: 900px) {
+  /* --- Panel base: strict viewport fit --- */
   .panel {
-    min-height: 100vh;
-    height: auto;
-    padding: 4rem 1.5rem 2rem;
+    height: 100vh;
+    height: 100svh;
+    min-height: 100svh;
+    padding: 3.5rem 1.1rem 1.6rem;
+  }
+
+  .panel__inner {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .panel__inner--split {
     flex-direction: column;
     text-align: center;
-    gap: 2rem;
+    gap: 1.25rem;
+    align-items: center;
+  }
+
+  .panel__inner--center {
+    align-items: center;
+  }
+
+  .panel__label {
+    font-size: 0.78rem;
+    margin-bottom: 0.5rem;
   }
 
   .panel__heading {
-    font-size: clamp(1.5rem, 5vw, 2.4rem);
+    font-size: clamp(1.4rem, 5.4vw, 1.95rem);
+    line-height: 1.2;
+    margin-bottom: 0.55rem;
   }
 
   .panel__heading--large {
-    font-size: clamp(1.6rem, 5.5vw, 2.6rem);
+    font-size: clamp(1.55rem, 6vw, 2.1rem);
   }
 
   .panel__sub {
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.86rem;
+    line-height: 1.45;
+    margin-bottom: 1rem;
+    max-width: 100%;
   }
 
   .panel__num {
-    font-size: 0.7rem;
-    bottom: 0.75rem;
-    left: 1.5rem;
+    font-size: 0.65rem;
+    bottom: 0.55rem;
+    left: 1.1rem;
   }
 
   /* --- Nav --- */
   .nav {
-    padding: 0.75rem 1.25rem;
+    padding: 0.7rem 1.1rem;
   }
 
   .nav__logo {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .nav__github {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    gap: 0.3rem;
+  }
+
+  .nav__github svg {
+    width: 14px;
+    height: 14px;
   }
 
   /* --- Hero --- */
   .hero__text {
     max-width: 100%;
     text-align: center;
+    flex: 0 1 auto;
+  }
+
+  .hero__visual {
+    flex: 0 1 auto;
   }
 
   .hero__title {
-    font-size: clamp(2rem, 8vw, 3.5rem);
+    font-size: clamp(1.9rem, 8vw, 2.6rem);
+    margin-bottom: 0.4rem;
   }
 
   .hero__tagline {
-    font-size: clamp(1rem, 3.5vw, 1.4rem);
+    font-size: clamp(0.95rem, 3.6vw, 1.2rem);
+    margin-bottom: 0.6rem;
   }
 
   .hero__desc {
     max-width: 100%;
-    font-size: 0.9rem;
+    font-size: 0.82rem;
+    line-height: 1.5;
   }
 
   .hero__device img {
-    width: 180px;
+    width: 150px;
   }
 
   .hero__glow {
-    width: 250px;
-    height: 250px;
+    width: 220px;
+    height: 220px;
   }
 
   .hero__scroll-hint {
-    right: 1.5rem;
-    bottom: 1.5rem;
-    font-size: 0.75rem;
+    right: 1.1rem;
+    bottom: 1.1rem;
+    font-size: 0.68rem;
+    gap: 0.3rem;
   }
 
-  /* --- Problem --- */
+  .hero__scroll-hint svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* --- Problem: row-card with thumb on left --- */
   .problem__items {
     flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
+    gap: 0.55rem;
+    margin-top: 0.4rem;
+    width: 100%;
+    align-items: stretch;
   }
 
   .problem__item {
-    padding: 1rem 1.25rem;
-    font-size: 1.1rem;
+    flex-direction: row;
+    gap: 0.85rem;
+    align-items: center;
+    text-align: left;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.95rem;
     max-width: 100%;
   }
 
-  .problem__photo img {
-    height: 100px;
+  .problem__photo {
+    width: 72px;
+    flex: 0 0 72px;
   }
 
-  /* --- Solution --- */
+  .problem__photo img {
+    height: 52px;
+    width: 72px;
+  }
+
+  .problem__photo--1,
+  .problem__photo--2,
+  .problem__photo--3 {
+    transform: none;
+  }
+
+  .problem__label {
+    flex: 1;
+    text-align: left;
+  }
+
+  .problem__strike {
+    left: 0;
+  }
+
+  /* --- Solution: row-card with icon on left --- */
   .solution__cards {
     flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
+    gap: 0.55rem;
+    width: 100%;
+    align-items: stretch;
   }
 
   .solution__card {
     max-width: 100%;
     width: 100%;
-    padding: 1.5rem 1.25rem;
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.9rem;
+    text-align: left;
   }
 
   .solution__icon {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.7rem;
+    margin-bottom: 0;
+    flex: 0 0 auto;
+    line-height: 1;
   }
 
   .solution__title {
-    font-size: 1.1rem;
+    font-size: 0.98rem;
+    margin-bottom: 0.15rem;
   }
 
   .solution__desc {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
+    line-height: 1.4;
   }
 
-  /* --- Showcase --- */
+  /* --- Showcase: 2x2 grid, unified box for all 4 devices --- */
   .showcase__gallery {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem 1.1rem;
+    align-items: center;
     justify-items: center;
+    margin: 0.4rem auto 0;
+    max-width: 320px;
+  }
+
+  .showcase__item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .showcase__device {
-    width: 120px;
+    width: 100%;
+    max-width: 112px;
+    height: 132px;
+    object-fit: contain;
   }
 
   .showcase__color {
-    font-size: 0.75rem;
-    margin-top: 0.5rem;
+    font-size: 0.72rem;
+    margin-top: 0.35rem;
+    gap: 0.3rem;
   }
 
-  /* --- Screenshots --- */
+  .showcase__color::before {
+    width: 9px;
+    height: 9px;
+  }
+
+  /* --- Screenshots: 3-across square placeholders --- */
   .screens__grid {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.55rem;
+    margin-top: 0.4rem;
   }
 
   .screens__item {
     width: 100%;
-    max-width: 280px;
+    max-width: 100%;
+  }
+
+  .screens__frame {
+    padding: 0.3rem;
   }
 
   .screens__placeholder {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 1 / 1;
+    padding: 0.4rem 0.25rem;
+    gap: 0.1rem;
+    text-align: center;
   }
 
   .screens__placeholder span {
-    font-size: 1rem;
+    font-size: 0.78rem;
+  }
+
+  .screens__placeholder small {
+    font-size: 0.6rem;
+    line-height: 1.2;
   }
 
   /* --- Video --- */
   .video__wrapper {
     max-width: 100%;
+    margin-top: 0.4rem;
   }
 
   .video__play {
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
   }
 
   .video__play-icon {
-    border-width: 10px 0 10px 18px;
+    border-width: 9px 0 9px 16px;
     margin-left: 3px;
   }
 
-  /* --- CTA --- */
+  /* --- CTA: 2x2 grid --- */
+  .panel--cta .panel__heading {
+    margin-bottom: 1.4rem;
+  }
+
   .cta__links {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.6rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 340px;
+    margin-bottom: 1.25rem;
   }
 
   .cta__link {
     width: 100%;
-    max-width: 280px;
+    max-width: none;
+    padding: 0.7rem 0.5rem;
+    font-size: 0.85rem;
+    gap: 0.4rem;
     justify-content: center;
-    padding: 0.9rem 1.5rem;
-    font-size: 1rem;
+  }
+
+  .cta__link svg {
+    width: 18px;
+    height: 18px;
   }
 
   .footer {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    margin-top: 0.65rem;
   }
 
-  /* --- Decorations (smaller on mobile) --- */
+  /* --- Decorations (smaller, less opaque on mobile) --- */
   .deco {
-    opacity: 0.4;
-    transform: scale(0.5);
+    opacity: 0.35;
+    transform: scale(0.45);
   }
 }
 
-/* Very small screens */
+/* Very small screens (≤ 400px wide) — tighten further */
 @media (max-width: 400px) {
   .panel {
-    padding: 3.5rem 1rem 1.5rem;
+    padding: 3.25rem 0.9rem 1.4rem;
+  }
+
+  .panel__heading {
+    font-size: clamp(1.25rem, 5.4vw, 1.65rem);
   }
 
   .hero__title {
-    font-size: 2rem;
+    font-size: 1.85rem;
   }
 
   .hero__device img {
-    width: 140px;
+    width: 130px;
+  }
+
+  .hero__glow {
+    width: 190px;
+    height: 190px;
+  }
+
+  .showcase__gallery {
+    max-width: 260px;
+    gap: 0.6rem 0.9rem;
   }
 
   .showcase__device {
-    width: 90px;
+    max-width: 96px;
+    height: 116px;
+  }
+
+  .problem__photo {
+    width: 58px;
+    flex: 0 0 58px;
+  }
+
+  .problem__photo img {
+    height: 42px;
+    width: 58px;
+  }
+
+  .problem__item {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.88rem;
   }
 
   .solution__card {
-    padding: 1.25rem 1rem;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .solution__icon {
+    font-size: 1.55rem;
+  }
+
+  .screens__placeholder small {
+    display: none;
+  }
+
+  .cta__link {
+    font-size: 0.8rem;
+    padding: 0.6rem 0.4rem;
+  }
+
+  .cta__link svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Short / landscape phones — re-flow rows side-by-side to use width */
+@media (max-width: 900px) and (max-height: 560px) {
+  .panel {
+    padding: 2.75rem 1.4rem 1.15rem;
+  }
+
+  .panel__label {
+    font-size: 0.7rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .panel__heading {
+    font-size: clamp(1.15rem, 4vw, 1.5rem);
+    margin-bottom: 0.35rem;
+  }
+
+  .panel__sub {
+    font-size: 0.76rem;
+    margin-bottom: 0.55rem;
+  }
+
+  .nav {
+    padding: 0.5rem 1rem;
+  }
+
+  .nav__logo {
+    font-size: 0.85rem;
+  }
+
+  .nav__github {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  /* hero side-by-side again */
+  .panel--hero .panel__inner--split {
+    flex-direction: row;
+    gap: 1.25rem;
+    align-items: center;
+  }
+
+  .hero__text {
+    text-align: left;
+    flex: 1 1 0;
+  }
+
+  .hero__title {
+    font-size: clamp(1.55rem, 4.5vw, 2rem);
+    margin-bottom: 0.3rem;
+  }
+
+  .hero__tagline {
+    font-size: 0.9rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .hero__desc {
+    font-size: 0.74rem;
+    line-height: 1.4;
+  }
+
+  .hero__device img {
+    width: 105px;
+  }
+
+  .hero__glow {
+    width: 170px;
+    height: 170px;
+  }
+
+  /* problem & solution: 3-across compact tiles */
+  .problem__items {
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+
+  .problem__item {
+    flex: 1;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.45rem 0.5rem;
+    font-size: 0.78rem;
+    text-align: center;
+  }
+
+  .problem__photo {
+    width: 100%;
+    flex: 0 0 auto;
+    max-width: none;
+  }
+
+  .problem__photo img {
+    height: 42px;
+    width: 100%;
+  }
+
+  .problem__label {
+    text-align: center;
+  }
+
+  .problem__strike {
+    left: 10%;
+  }
+
+  .solution__cards {
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+
+  .solution__card {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.25rem;
+    padding: 0.6rem 0.55rem;
+  }
+
+  .solution__icon {
+    font-size: 1.4rem;
+  }
+
+  .solution__title {
+    font-size: 0.82rem;
+  }
+
+  .solution__desc {
+    font-size: 0.66rem;
+    line-height: 1.3;
+  }
+
+  /* showcase: 4-across */
+  .showcase__gallery {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.55rem;
+    max-width: 500px;
+  }
+
+  .showcase__device {
+    max-width: 84px;
+    height: 102px;
+  }
+
+  .showcase__color {
+    font-size: 0.65rem;
+    margin-top: 0.2rem;
+  }
+
+  /* screens: stays 3-across, smaller text */
+  .screens__placeholder span {
+    font-size: 0.7rem;
+  }
+
+  .screens__placeholder small {
+    font-size: 0.55rem;
+  }
+
+  /* video: cap to viewport height */
+  .video__wrapper {
+    max-width: min(72vw, 78vh);
+  }
+
+  .video__play {
+    width: 48px;
+    height: 48px;
+  }
+
+  .video__play-icon {
+    border-width: 7px 0 7px 13px;
+    margin-left: 2px;
+  }
+
+  /* cta: 4-across */
+  .panel--cta .panel__heading {
+    margin-bottom: 0.85rem;
+  }
+
+  .cta__links {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 560px;
+    gap: 0.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .cta__link {
+    padding: 0.55rem 0.35rem;
+    font-size: 0.72rem;
+    gap: 0.3rem;
+  }
+
+  .cta__link svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .footer {
+    font-size: 0.62rem;
+    line-height: 1.4;
   }
 }
